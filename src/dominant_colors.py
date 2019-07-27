@@ -14,21 +14,33 @@ Note that this is a python3 project.
 import numpy as np
 import os
 from   PIL import Image
+import random
 from   sklearn.cluster import KMeans
 import sys ## for argv / params 
 
 ## TODO -- add better path handling
 ## TODO -- refactor things into reusable functions 
 
+IMAGE_BAND = 'RGB'
+# SEED = int( random.random() * 100 ) ## for spicing up the run 
+SEED_KMEANS = 0 
+inputPath = "/Users/tefferon/Documents/Workspace/dominant-colors/assets/nut.png"
+
+def outputPath( inputPath ):
+    import datetime
+    path, fileExtension = inputPath.split('.')
+    nowWithoutMicroseconds = datetime.datetime.now().isoformat().split('.')[0] ## ex, ['2019-07-27T13:49:38', '234493'][0]
+    return "{}-{}.{}".format(path, nowWithoutMicroseconds, fileExtension)
+
 ## Open the file and settle for only RGB
-im = Image.open("/Users/tefferon/Documents/Workspace/dominant-colors/assets/nut.png").convert('RGB')
+im = Image.open(inputPath).convert(IMAGE_BAND)
 
 ## Get our image data and dimensions
 width, height = im.size
 pixels = np.array(im.getdata())
 
 ## create and run our model 
-kmeans = KMeans(n_clusters=5, random_state=0).fit(pixels)
+kmeans = KMeans(n_clusters=5, random_state=SEED_KMEANS).fit(pixels)
 
 ## round out and store our centroid values 
 dominant_colors = []
@@ -56,5 +68,5 @@ for y in range(height):
     outArray.append( line )
 
 outImage = Image.fromarray( np.array( outArray , dtype=np.dtype('uint8') ), mode='RGB') 
-outImage.save('/Users/tefferon/Documents/Workspace/dominant-colors/assets/tattoo-output-1.png')
+outImage.save( outputPath( inputPath ) )
 
