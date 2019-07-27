@@ -116,3 +116,4 @@ dmypy.json
 # Attempt to stop tracking our test assets
 assets/*
 .vscode/settings.json
+src/dumpfile.py
