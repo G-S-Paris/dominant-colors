@@ -114,5 +114,4 @@ dmypy.json
 .pyre/
 
 # Attempt to stop tracking our test assets
-.assets/
-
+assets/*
