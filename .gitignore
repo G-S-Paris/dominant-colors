@@ -117,3 +117,4 @@ dmypy.json
 assets/*
 .vscode/settings.json
 src/dumpfile.py
+src/config.py
