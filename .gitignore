@@ -118,3 +118,5 @@ assets/*
 .vscode/settings.json
 src/dumpfile.py
 src/config.py
+.DS_Store
+.vscode/settings.json

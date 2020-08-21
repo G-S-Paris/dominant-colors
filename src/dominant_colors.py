@@ -1,4 +1,5 @@
-#!/usr/bin/python
+#!/usr/local/bin/python3
+
 """
 Author: Greyson Paris 
 
@@ -10,6 +11,11 @@ Premise
      designing solutions, software architecture, soliciting for donations (maybe)
 
 Note that this is a python3 project.
+
+How do I run this?? no documentation on this
+
+
+## todo refactor into functions 
 """
 import numpy as np
 import os
@@ -24,7 +30,7 @@ import sys ## for argv / params
 IMAGE_BAND = 'RGB'
 # SEED = int( random.random() * 100 ) ## for spicing up the run 
 SEED_KMEANS = 0 
-inputPath = "/Users/tefferon/Documents/Workspace/dominant-colors/assets/nut.png"
+inputPath = "/Users/tefferon/Documents/Code/dominant-colors/assets/nut.png"
 
 def outputPath( inputPath ):
     import datetime
